@@ -20,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	/* username이 DB에 있는지 확인 */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userRepository.findByUserName(username).orElseThrow(() ->
+		User user = userRepository.findByUsername(username).orElseThrow(() ->
 			new UsernameNotFoundException("해당 사용자가 존재하지 않습니다. : " + username));
 
 //		session.setAttribute("user", new UserSessionDto(user));
