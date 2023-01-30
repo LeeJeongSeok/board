@@ -4,6 +4,7 @@ import com.jeongseok.board.domain.User;
 import com.jeongseok.board.dto.CustomUserDetails;
 import com.jeongseok.board.dto.UserDto;
 import com.jeongseok.board.repository.UserRepository;
+import com.jeongseok.board.type.UserRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,6 +24,7 @@ public class UserService implements UserDetailsService {
 	@Transactional
 	public Long join(UserDto userDto) {
 		userDto.setPassword(encoder.encode(userDto.getPassword()));
+		userDto.setRole(UserRole.USER);
 
 		return userRepository.save(userDto.toEntity(userDto)).getId();
 	}
