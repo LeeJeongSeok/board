@@ -1,6 +1,6 @@
 package com.jeongseok.board.controller;
 
-import com.jeongseok.board.model.UserDto;
+import com.jeongseok.board.dto.UserDto;
 import com.jeongseok.board.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,14 +13,31 @@ public class UserController {
 
 	private final UserService userService;
 
-	@GetMapping("/user/join")
-	public String join() {
-		return "user/join";
+	@GetMapping(value = {"/", "/home"})
+	public String index() {
+		return "home";
 	}
-	@PostMapping("/user/join")
-	public String userRegister(UserDto userDto) {
+
+	@GetMapping("/hello")
+	public String hello() {
+		return "hello";
+	}
+
+	@GetMapping("/login")
+	public String login() {
+		return "/user/login";
+	}
+
+	@GetMapping("/auth/join")
+	public String join() {
+		return "/user/join";
+	}
+
+	@PostMapping("/auth/join")
+	public String join(UserDto userDto) {
 		userService.join(userDto);
 
-		return "/";
+		return "redirect:/login";
 	}
+
 }

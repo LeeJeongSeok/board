@@ -1,10 +1,9 @@
-package com.jeongseok.board.entity;
+package com.jeongseok.board.domain;
 
-import com.jeongseok.board.type.Role;
+import com.jeongseok.board.type.UserRole;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -17,32 +16,31 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false, unique = true, name = "email")
 	private String username;
 	private String password;
-	private String nickname;
+	private String name;
 	private String phone;
-	private String profile;
 
 	@Enumerated(EnumType.STRING)
-	private Role role;
+	private UserRole role;
+
 	@CreatedDate
 	private LocalDateTime createAt;
+
 	@LastModifiedDate
 	private LocalDateTime updatedAt;
+
 }
