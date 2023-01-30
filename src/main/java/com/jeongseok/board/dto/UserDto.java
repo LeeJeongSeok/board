@@ -33,8 +33,6 @@ public class UserDto {
 					.name(userDto.name)
 					.phone(userDto.phone)
 					.role(userDto.role)
-					.createdAt(userDto.createdAt)
-					.updatedAt(userDto.updatedAt)
 					.build();
 	}
 }
