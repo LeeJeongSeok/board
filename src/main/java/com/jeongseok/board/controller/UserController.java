@@ -15,7 +15,7 @@ public class UserController {
 
 	@GetMapping(value = {"/", "/home"})
 	public String index() {
-		return "home";
+		return "/board/board";
 	}
 
 	@GetMapping("/hello")
