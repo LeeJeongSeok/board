@@ -1,9 +1,11 @@
 package com.jeongseok.board.controller;
 
-import com.jeongseok.board.dto.UserDto;
+import com.jeongseok.board.dto.CreateUserDto;
 import com.jeongseok.board.service.UserService;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -34,8 +36,12 @@ public class UserController {
 	}
 
 	@PostMapping("/auth/join")
-	public String join(UserDto userDto) {
-		userService.join(userDto);
+	public String join(@Valid CreateUserDto createUserDto, Errors errors) {
+
+		if (errors.hasErrors()) {
+//			return "/user/join";
+		}
+		userService.join(createUserDto);
 
 		return "redirect:/login";
 	}

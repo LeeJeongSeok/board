@@ -1,8 +1,8 @@
 package com.jeongseok.board.service;
 
 import com.jeongseok.board.domain.User;
+import com.jeongseok.board.dto.CreateUserDto;
 import com.jeongseok.board.dto.CustomUserDetails;
-import com.jeongseok.board.dto.UserDto;
 import com.jeongseok.board.repository.UserRepository;
 import com.jeongseok.board.type.UserRole;
 import lombok.RequiredArgsConstructor;
@@ -21,12 +21,17 @@ public class UserService implements UserDetailsService {
 
 	private final BCryptPasswordEncoder encoder;
 
+	/**
+	 *
+	 * @param createUserDto
+	 * @return
+	 */
 	@Transactional
-	public Long join(UserDto userDto) {
-		userDto.setPassword(encoder.encode(userDto.getPassword()));
-		userDto.setRole(UserRole.USER);
+	public Long join(CreateUserDto createUserDto) {
+		createUserDto.setPassword(encoder.encode(createUserDto.getPassword()));
+		createUserDto.setRole(UserRole.USER);
 
-		return userRepository.save(userDto.toEntity(userDto)).getId();
+		return userRepository.save(createUserDto.toEntity(createUserDto)).getId();
 	}
 
 	@Override
