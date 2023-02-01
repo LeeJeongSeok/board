@@ -9,30 +9,58 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class UserDto {
 
-	private String username;
-	private String password;
-	private String name;
-	private String phone;
-	private UserRole role;
-	private LocalDateTime createdAt;
-	private LocalDateTime updatedAt;
+	@Getter @Setter
+	@AllArgsConstructor
+	@NoArgsConstructor
+	@Builder
+	public static class Request {
+		private String username;
+		private String password;
+		private String name;
+		private String phone;
+		private UserRole role;
+		private LocalDateTime createdAt;
+		private LocalDateTime updatedAt;
+
+		/**
+		 * DTO -> Entity
+		 */
+		public User toEntity(UserDto userDto) {
+			return User.builder()
+				.username(username)
+				.password(password)
+				.name(name)
+				.phone(phone)
+				.role(role)
+				.build();
+		}
+	}
+
 
 	/**
-	 * DTO -> Entity
+	 * 인증된 사용자 정보를 세션에 저장하기 위한 responseDto 클래스 생성
 	 */
-	public User toEntity(UserDto userDto) {
-		return User.builder()
-					.username(userDto.username)
-					.password(userDto.password)
-					.name(userDto.name)
-					.phone(userDto.phone)
-					.role(userDto.role)
-					.build();
+	@Getter
+	@Builder
+	public static class Response {
+
+		private String username;
+		private String name;
+		private String phone;
+		private UserRole role;
+
+		public static Response from
+			(User user) {
+			return Response.builder()
+				.username(user.getUsername())
+				.name(user.getName())
+				.phone(user.getPhone())
+				.role(user.getRole())
+				.build();
+		}
 	}
+
+
 }
