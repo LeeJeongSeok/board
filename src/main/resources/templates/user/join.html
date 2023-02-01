@@ -10,19 +10,23 @@
     <form action="/auth/join" method="post">
 
       <div>
-        <input type="email" name="username" placeholder="아이디 입력" required/>
+        <input type="email" name="username" placeholder="아이디 입력 (이메일 형식)"/>
+        <span th:text="${valid_username}"></span>
       </div>
 
       <div>
-        <input type="password" name="password" placeholder="비밀번호 입력" required/>
+        <input type="password" name="password" placeholder="비밀번호 입력"/>
+        <span th:text="${valid_password}"></span>
       </div>
 
       <div>
-        <input type="text" name="name" placeholder="이름 입력" required/>
+        <input type="text" name="name" placeholder="이름 입력"/>
+        <span th:text="${valid_name}"></span>
       </div>
 
       <div>
-        <input type="tel" name="phone" placeholder="전화번호 입력" required/>
+        <input type="tel" name="phone" placeholder="전화번호 입력"/>
+        <span th:text="${valid_phone}"></span>
       </div>
 
       <div>
