@@ -27,10 +27,13 @@ public class SecurityConfig {
 			)
 			.formLogin((form) -> form
 				.loginPage("/login")
-				.defaultSuccessUrl("/board")
+				.defaultSuccessUrl("/")
 				.permitAll()
 			)
-			.logout((logout) -> logout.permitAll());
+			.logout((logout) -> logout.permitAll()
+				.logoutSuccessUrl("/")
+				.invalidateHttpSession(true)
+			);
 
 		return http.build();
 	}
