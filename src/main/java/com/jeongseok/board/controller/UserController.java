@@ -17,14 +17,9 @@ public class UserController {
 
 	private final UserService userService;
 
-	@GetMapping(value = {"/", "/home"})
+	@GetMapping("/")
 	public String index() {
 		return "/board/board";
-	}
-
-	@GetMapping("/hello")
-	public String hello() {
-		return "hello";
 	}
 
 	@GetMapping("/login")
