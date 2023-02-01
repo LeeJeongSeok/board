@@ -13,4 +13,9 @@ public class BoardController {
 		return "/board/board";
 	}
 
+	@GetMapping("/board/write")
+	public String write() {
+		return "/board/write";
+	}
+
 }
