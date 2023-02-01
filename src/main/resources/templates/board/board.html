@@ -7,15 +7,18 @@
 <body>
 <h1>게시판 커뮤니티</h1>
 
-<a href="/board/write">게시글 작성하기</a>
+<div style="float: left">
+  <a href="/board/write">게시글 작성하기</a>
+  <a> </a>
+</div>
 
-<div th:if="${session.user == null}">
+<div style="float: right" th:if="${session.user == null}">
   <a href="/login">로그인</a>
   <a href="/auth/join">회원가입</a>
 </div>
 
-<div th:if="${session.user != null}">
-  <div th:text="${session.user.getUsername()}"></div>님 환영합니다.
+<div style="float: right" th:if="${session.user != null}">
+  <a th:text="${session.user.getUsername()}"></a>님 환영합니다.
   <a href="/logout">로그아웃</a>
 </div>
 
