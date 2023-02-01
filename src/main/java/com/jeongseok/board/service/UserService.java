@@ -1,7 +1,6 @@
 package com.jeongseok.board.service;
 
 import com.jeongseok.board.domain.User;
-import com.jeongseok.board.dto.CreateUserDto;
 import com.jeongseok.board.dto.CustomUserDetails;
 import com.jeongseok.board.dto.UserDto;
 import com.jeongseok.board.repository.UserRepository;
@@ -29,11 +28,11 @@ public class UserService implements UserDetailsService {
 	private final HttpSession session;
 
 	@Transactional
-	public Long join(CreateUserDto createUserDto) {
+	public Long join(UserDto.Request createUserDto) {
 		createUserDto.setPassword(encoder.encode(createUserDto.getPassword()));
 		createUserDto.setRole(UserRole.USER);
 
-		return userRepository.save(createUserDto.toEntity(createUserDto)).getId();
+		return userRepository.save(createUserDto.toEntity()).getId();
 	}
 
 	@Override

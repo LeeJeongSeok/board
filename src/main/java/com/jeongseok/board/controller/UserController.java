@@ -1,6 +1,6 @@
 package com.jeongseok.board.controller;
 
-import com.jeongseok.board.dto.CreateUserDto;
+import com.jeongseok.board.dto.UserDto;
 import com.jeongseok.board.service.UserService;
 import java.util.Map;
 import javax.validation.Valid;
@@ -38,7 +38,7 @@ public class UserController {
 	}
 
 	@PostMapping("/auth/join")
-	public String join(@Valid CreateUserDto createUserDto, Errors errors, Model model) {
+	public String join(@Valid UserDto.Request createUserDto, Errors errors, Model model) {
 
 		if (errors.hasErrors()) {
 			/* 유효성 통과 못한 필드와 메시지를 핸들링 */
