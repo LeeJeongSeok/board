@@ -23,7 +23,6 @@ import org.springframework.validation.FieldError;
 public class UserService implements UserDetailsService {
 
 	private final UserRepository userRepository;
-
 	private final BCryptPasswordEncoder encoder;
 	private final HttpSession session;
 
