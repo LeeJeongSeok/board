@@ -28,6 +28,7 @@ public class BoardDto {
 				.title(title)
 				.content(content)
 				.username(username)
+				.useYn("Y")
 				.build();
 		}
 	}

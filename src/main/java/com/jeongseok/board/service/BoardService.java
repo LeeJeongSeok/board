@@ -4,6 +4,8 @@ import com.jeongseok.board.domain.Board;
 import com.jeongseok.board.dto.BoardDto;
 import com.jeongseok.board.dto.BoardDto.Request;
 import com.jeongseok.board.repository.BoardRepository;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +18,7 @@ public class BoardService {
 	private final BoardRepository boardRepository;
 
 	public List<Board> getBoardList() {
-		List<Board> boardList = boardRepository.findAll();
+		List<Board> boardList = boardRepository.findAllByUseYn("Y");
 
 		return boardList;
 	}
@@ -50,5 +52,8 @@ public class BoardService {
 			new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
 
 		board.setUseYn("N");
+		board.setDeletedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));
+
+		boardRepository.save(board);
 	}
 }

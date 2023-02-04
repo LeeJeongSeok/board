@@ -26,6 +26,6 @@ public class Board extends BaseEntity {
 
 	private String useYn;
 
-
+	private String deletedAt;
 
 }
