@@ -46,20 +46,20 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
+  <tr th:each="x : ${list}">
     <td>
-      1
+      <a th:href="'/board/' + ${x.id}" th:text="${x.id}">1</a>
     </td>
-    <td>
+    <td th:text="${x.title}">
       게시판 제목 테스트
     </td>
-    <td>
+    <td th:text="${x.content}">
       작성자 테스트
     </td>
-    <td>
+    <td th:text="${x.createdAt}">
       <p>2021.01.01</p>
     </td>
-    <td>
+    <td  th:text="${x.updatedAt}">
       <p>2021.01.01</p>
     </td>
   </tr>
