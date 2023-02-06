@@ -1,31 +1,14 @@
 ### 변경사항
-**AS-IS**
-
-* 최초 요구사항 작성시 프론트화면 없이 http 테스트를 활용하여 데이터 검증하려고 계획하였음 * 
-![스크린샷 2023-02-01 오후 3 59 56](https://user-images.githubusercontent.com/13554850/215973529-d43f63e7-3c4c-4d3d-8426-37d6e32f3f15.png)
-
-**TO-BE**
-
-* 커뮤니성 게시판 프로젝트이기 때문에 사용자가 결과를 확인할 수 있는 뷰 페이지가 존재해야하기 때문에 thymeleaf로 view 페이지 생성*
 
 ** 개발 현황 (도메인별 정리)**
 * 로그인, 회원가입 기능이 구현되게 개발 해놓은 상태
   - 패키지별 개발 상황
       * config
-          * SpringSecurity 설정은 Spring 공식 문서에 나와있는 가장 기본 설정으로 해놓은 상태
-      * controller
-          * View 레벨 개발 완료 (A 태그 라인 제외)
-          * @Vaild 어노테이션을 활용하여 회원가입 시 Controller 부분에 dto 검증 코드 작성 완료
-          * 로그인 완료 후 메인 페이지에서 ***님 환영합니다. 라는 문구와 로그아웃 버튼이 나올 수 있게 개발 완료 (로그인이 아닌 상태에선 로그인, 회원가입 버튼 노출)
-          * 검증 실패시 join.html 파일에 오류 내용 출력
-      * domain
-          * 공통 엔티티 분리 완료 (생성 일시, 수정 일시) - **BaseEntity**
+          * JpaAuditingConfig 클래스 별도 분리
+      * controller & service
+          * 게시판 CRUD 기능 구현 완료
       * repository
-          * UserRepository 생성
-      * service
-          * 회원가입 메소드, validation 체크 메소드 생성
-      * type
-          * 유저의 권한을 의미하는 enum 클래스 생성
+          * BoardRepository 생성
 
-### 테스트
-테스트 코드는 아직 작성하지 않았음
+### 테스트 코드
+UserControllerTest 파일 생성
